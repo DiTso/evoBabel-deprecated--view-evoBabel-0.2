@@ -1,3 +1,6 @@
+### author webber (web-ber12@yandex.ru)
+
+
 ### evoBabel - новый велосипед для мультиязычных сайтов на MODx Evo
 
 ### Состав:
