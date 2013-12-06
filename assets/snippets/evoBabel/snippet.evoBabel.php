@@ -7,7 +7,7 @@ if(isset($_GET['id'])&&(int)$_GET['id']!=0){
 	include_once('functions.evoBabel.php');
 
 	//получаем массив языков сайта
-	$langs=getSiteLangs($lang_template_id);
+	$langs=getAllSiteLangs($lang_template_id);
 
 	//id текущего ресурса
 	$id=(int)$_GET['id'];
