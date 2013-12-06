@@ -1,7 +1,7 @@
-$path=MODX_BASE_URL;
-$manager_path=MODX_MANAGER_PATH;
-$moduleid=$_GET['id'];
-$module_path=MODX_MANAGER_PATH."index.php?a=112&id=".$moduleid;
+$actions_path=MODX_BASE_URL.'assets/snippets/evoBabel/lexicon/actions.php';
+$lexicon_path=MODX_BASE_URL.'assets/snippets/evoBabel/lexicon/';
+$theme=$modx->config['manager_theme'];
+
 
 $sql="
 CREATE TABLE IF NOT EXISTS ".$modx->getFullTableName('lexicon')." (
@@ -48,15 +48,15 @@ $output=<<<OUT
 <head>
 	<meta charset="UTF-8">
 	<title>MODx EVO Lexicons</title>
-	<link rel="stylesheet" type="text/css" href="media/style/MODxRE/style.css" />
-	<link rel="stylesheet" type="text/css" href="{$path}assets/snippets/evoBabel/lexicon/jquery-easyui-1.3.4/themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="{$path}assets/snippets/evoBabel/lexicon/jquery-easyui-1.3.4/themes/icon.css">
-	<link rel="stylesheet" type="text/css" href="{$path}assets/snippets/evoBabel/lexicon/jquery-easyui-1.3.4/demo/demo.css">
-	<script type="text/javascript" src="{$path}assets/snippets/evoBabel/lexicon/jquery-easyui-1.3.4/jquery.min.js"></script>
-	<script type="text/javascript" src="{$path}assets/snippets/evoBabel/lexicon/jquery-easyui-1.3.4/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="{$path}assets/snippets/evoBabel/lexicon/jquery-easyui-1.3.4/plugins/jquery.edatagrid.js"></script>
-	<script type="text/javascript" src="{$path}assets/snippets/evoBabel/lexicon/datagrid-filter/datagrid-filter.js"></script>
-	<script type="text/javascript" src="{$path}assets/snippets/evoBabel/lexicon/jquery-easyui-1.3.4/locale/easyui-lang-ru.js"></script>
+	<link rel="stylesheet" type="text/css" href="media/style/{$theme}/style.css" />
+	<link rel="stylesheet" type="text/css" href="{$lexicon_path}jquery-easyui-1.3.4/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="{$lexicon_path}jquery-easyui-1.3.4/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="{$lexicon_path}jquery-easyui-1.3.4/demo/demo.css">
+	<script type="text/javascript" src="{$lexicon_path}jquery-easyui-1.3.4/jquery.min.js"></script>
+	<script type="text/javascript" src="{$lexicon_path}jquery-easyui-1.3.4/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="{$lexicon_path}jquery-easyui-1.3.4/plugins/jquery.edatagrid.js"></script>
+	<script type="text/javascript" src="{$lexicon_path}datagrid-filter/datagrid-filter.js"></script>
+	<script type="text/javascript" src="{$lexicon_path}jquery-easyui-1.3.4/locale/easyui-lang-ru.js"></script>
 </head>
 <body>
 
@@ -87,10 +87,10 @@ $output=<<<OUT
     <script type="text/javascript">
         $(function(){
             var dg = $('#dg').edatagrid({
-				url: '{$path}assets/snippets/evoBabel/lexicon/actions.php?manager_path={$manager_path}&action=get',
-                saveUrl: '{$path}assets/snippets/evoBabel/lexicon/actions.php?manager_path={$manager_path}&action=save',
-                updateUrl: '{$path}assets/snippets/evoBabel/lexicon/actions.php?manager_path={$manager_path}&action=update',
-                destroyUrl: '{$path}assets/snippets/evoBabel/lexicon/actions.php?manager_path={$manager_path}&action=destroy'
+				url: '{$actions_path}?action=get',
+                saveUrl: '{$actions_path}?action=save',
+                updateUrl: '{$actions_path}?action=update',
+                destroyUrl: '{$actions_path}?action=destroy'
             });
 			
 			dg.edatagrid('enableFilter');

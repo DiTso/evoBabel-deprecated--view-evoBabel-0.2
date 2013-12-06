@@ -2,17 +2,11 @@
 if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 
 	define('MODX_API_MODE', true);
-	
-	if(isset($_GET['manager_path'])){
-	$manager_path=$_GET['manager_path'];
-
-	
-	include_once $manager_path.'includes/config.inc.php';
-	include_once $manager_path.'includes/protect.inc.php';
-	include_once $manager_path.'includes/document.parser.class.inc.php';
-	$modx = new DocumentParser;
+	include_once("../../../../index.php");
 	$modx->db->connect();
-	$modx->getSettings();
+	if (empty($modx->config)) {
+		$modx->getSettings();
+	}
 
 	//работа с данными - удаление, сохранение, обновление
 	if(isset($_GET['action'])){
@@ -24,6 +18,7 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED
 				$a=json_encode($list);
 				echo $a;
 			break;
+			
 			case 'save':
 				foreach($_POST as $k=>$v){
 					if($k!='isNewRecord'){
@@ -34,6 +29,7 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED
 					$modx->db->insert($fields,$modx->getFullTableName('lexicon'));
 				}
 			break;
+			
 			case 'update':
 				foreach($_POST as $k=>$v){
 					if($k=='id'){$id=(int)$v;}
@@ -45,6 +41,7 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED
 					$modx->db->update($fields,$modx->getFullTableName('lexicon'),'id='.$id);
 				}
 			break;
+			
 			case 'destroy':
 				$out='';
 				foreach($_POST as $k=>$v){
@@ -59,12 +56,8 @@ if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED
 			break;
 		}
 	}	
-	
 
-
-}
-
-//exit;
+exit;
 }
 
 
