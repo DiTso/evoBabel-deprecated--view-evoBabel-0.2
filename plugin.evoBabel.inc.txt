@@ -1,6 +1,6 @@
 <?php
 // конфигурация  &synch_TV=ids TV для синхронизации;text;13,14 &synch_template=ids шаблонов для синхронизации;text;7
-// события  OnPageNotFound,OnDocFormSave
+// события  OnPageNotFound,OnDocFormSave,OnBeforeEmptyTrash,OnEmptyTrash
 
 if(!defined('MODX_BASE_PATH')){die('What are you doing? Get out of here!');}
 
@@ -25,6 +25,7 @@ switch ($e->name ) {
 			$modx->sendRedirect($modx->makeUrl($docid));
 		}
 		break ;
+		
 	case 'OnDocFormSave'://синхронизация выбранных TV на выбранном шаблоне
 		if($e->params['mode']=='upd'&&(isset($synch_template)&&$synch_template!='')&&(isset($synch_TV)&&$synch_TV!='')){
 			$docid=$e->params['id'];
@@ -50,6 +51,46 @@ switch ($e->name ) {
 				}
 			}
 		}
+		break;
+		
+	case 'OnBeforeEmptyTrash': //собираем связи окончательно удаляемых ресурсов, чтобы потом скорректировать их связанные версии
+		if(isset($ids)&&is_array($ids)){
+			$del_ids=implode(',',$ids);
+			$del_array=array();
+			include_once(MODX_BASE_PATH."assets/snippets/evoBabel/functions.evoBabel.php");
+			$q=$modx->db->query("SELECT id,description FROM ".$modx->getFullTableName('site_content')." WHERE id IN ({$del_ids})");
+			while($row=$modx->db->getRow($q)){
+				if($row['description']!=''){
+					$rel_array=getRelationsArray($row['description']);
+					$del_array[$row['id']]=$rel_array;
+				}
+			}
+			$_SESSION['del_array']=$del_array;
+		}
+		break;
+		
+	case 'OnEmptyTrash': //корректируем связи языковых версий с учетом окончательного удаления ресурсов
+		$del_array=$_SESSION['del_array'];
+		if(!empty($del_array)){
+			foreach($del_array as $del_id=>$del_rels){
+				if(is_array($del_rels)){
+					$newrel='';
+					$oldrel='';
+					foreach($del_rels as $k=>$v){
+						$oldrel.=$k.':'.$v.'||';
+						if($v!=$del_id){
+							$newrel.=$k.':'.$v.'||';
+						}
+					}
+					$oldrel=substr($oldrel,0,-2);
+					$newrel=substr($newrel,0,-2);
+					if($oldrel!=''){
+						$modx->db->update(array('description'=>$newrel),$modx->getFullTableName('site_content'),"`description`='".$oldrel."'");
+					}
+				}
+			}
+		}
+		break;
 	
     default:
         return ;
