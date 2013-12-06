@@ -25,6 +25,16 @@ function getSiteLangs($lang_template_id){
 	}
 	return $langs;
 }
+function getAllSiteLangs($lang_template_id){
+	global $modx;
+	$q=$modx->db->query("SELECT * FROM ".$modx->getFullTableName('site_content')." WHERE parent=0 AND template=".$lang_template_id." ORDER BY menuindex ASC");
+	while($row=$modx->db->getRow($q)){
+		$langs[$row['id']]['name']=$row['longtitle'];
+		$langs[$row['id']]['home']=$row['description'];
+		$langs[$row['id']]['alias']=$row['alias'];
+	}
+	return $langs;
+}
 
 function _loadParent($id, $height){
 	global $modx;
