@@ -40,7 +40,7 @@
 * 11. Создаем новый сниппет lang и копируем код из файла snippet.lang.inc.txt (у него нет никаких доп.настроек)
 * 12. Создаем новый плагин evoBabel, копируем код из файла plugin.evoBabel.inc.txt
 * 13. В конфигурации плагина вставляем &synch_TV=ids TV для синхронизации;text;19,8,5,21,18,17,20,16,22 &synch_template=ids шаблонов для синхронизации;text;7 и указываем нужный шаблон и нужные id TV для синхронизации через запятую
-* 14. Системные события для плагина OnPageNotFound, OnDocFormSave
+* 14. Системные события для плагина OnPageNotFound, OnDocFormSave, OnBeforeEmptyTrash, OnEmptyTrash
 * 15. Создаем новый модуль evoBabelLexicon и помещаем в него код файла module.Lexicon.inc.txt
 
 * Осталось совсем чуть-чуть
