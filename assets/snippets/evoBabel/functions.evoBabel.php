@@ -26,10 +26,33 @@ function getSiteLangs($lang_template_id){
 	return $langs;
 }
 
-function getCurLangId($id){
+function _loadParent($id, $height){
 	global $modx;
-	$res=$modx->runSnippet('UltimateParent',array('topLevel'=>'0','id'=>$id));
-	return $res;
+    $parents = array();
+    $q=$modx->db->query("SELECT parent FROM ".$modx->getFullTableName("site_content")." WHERE id=".(int)$id);
+    if($modx->db->getRecordCount($q)==1){
+        $q = $modx->db->getRow($q);
+        $parents[$q['parent']] = $id;
+        if($height>0 && $q['parent']>0){
+            $data=_loadParent($q['parent'],$height--);
+            foreach($data as $key=>$val){
+                $parents[$key] = $val;
+            }
+        }
+    }
+    return $parents;
+}
+
+function getParentIds($id, $height= 10) {
+    $parents = _loadParent($id,$height);
+    reset($parents);
+    unset($parents[key($parents)]);
+    return $parents;
+}
+
+function getCurLangId($id){
+	$res=getParentIds($id);
+	return $res[0];
 }
 
 
