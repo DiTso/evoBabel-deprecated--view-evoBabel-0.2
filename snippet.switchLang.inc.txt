@@ -35,13 +35,6 @@ $curr_lang_id=getCurLangId($id);
 $relations=getRelations($id);
 $relArray=getRelationsArray($relations);
 
-//массив языков сайта кроме текущего
-/*foreach($siteLangs as $k=>$v){
-	if($k!=$curr_lang_id){
-		$others[$k]=$v;
-	}
-}
-*/
 
 //устанавливаем текущий язык
 $currLang=str_replace(array('[+alias+]','[+name+]'),array($siteLangs[$curr_lang_id]['alias'],$siteLangs[$curr_lang_id]['name']),$activeLang);
