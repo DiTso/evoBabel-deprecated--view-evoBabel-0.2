@@ -66,8 +66,6 @@ foreach($siteLangs as $k=>$v){
 }
 $langsList.=str_replace(array('[+wrapper+]'),array($langRows),$langOuter);
 
-$out.=$currLang.$langsList;
-
 // устанавливаем плейсхолдеры [+activeLang+] и [+switchLang+] для вывода активного языка и списка языков соответственно
 $modx->setPlaceholder("activeLang",$currLang);
 $modx->setPlaceholder("switchLang",$langsList);
