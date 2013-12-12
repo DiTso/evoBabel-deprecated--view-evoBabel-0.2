@@ -1,4 +1,17 @@
-<?php
+//<?php
+/**
+ * switchLang
+ * 
+ * MultiLang swith snippet
+ *
+ * @category 	snippet
+ * @version 	0.1
+ * @license 	http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
+ * @internal	@properties lang_template_id=id шаблона языка;text;11 &currlang=язык по умолчанию;text;ru
+ * @internal	@modx_category MultiLang
+ * @internal    @installset base, sample
+ */
+
 // значения по умолчанию на вкладке Свойства - &lang_template_id=id шаблона языка;text;11 &currlang=язык по умолчанию;text;ru
 
 //использование - вызываем в самом верху сайта [[switchLang? &id=`[*id*]`]]
@@ -79,4 +92,3 @@ while($row=$modx->db->getRow($q)){
 	$perevod[$row['name']]=$row[$cur_lexicon];
 }
 $_SESSION['perevod']=$perevod;
-?>

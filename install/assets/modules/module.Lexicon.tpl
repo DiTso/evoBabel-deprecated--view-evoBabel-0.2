@@ -1,3 +1,17 @@
+//<?
+/**
+ * evoBabelLexicon
+ * 
+ * manage Lexicon
+ * 
+ * @category	module
+ * @version 	0.1
+ * @license 	http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
+ * @internal	@guid evobalers
+ * @internal	@modx_category MultiLang
+ * @internal    @installset base, sample
+ */
+
 $actions_path=MODX_BASE_URL.'assets/snippets/evoBabel/lexicon/actions.php';
 $lexicon_path=MODX_BASE_URL.'assets/snippets/evoBabel/lexicon/';
 $theme=$modx->config['manager_theme'];

@@ -1,6 +1,18 @@
-<?php
-// конфигурация  &synch_TV=ids TV для синхронизации;text;13,14 &synch_template=ids шаблонов для синхронизации;text;7
-// события  OnPageNotFound,OnDocFormSave,OnBeforeEmptyTrash,OnEmptyTrash
+/**
+ * evoBabel
+ *
+ * plugin for work evoBabel
+ *
+ * @category	plugin
+ * @version	    0.1
+ * @license 	http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
+ * @internal	@guid 223453636a8c613426979b9dea1ff0415abf
+ * @internal    @events OnPageNotFound,OnDocFormSave,OnBeforeEmptyTrash,OnEmptyTrash
+ * @internal    @properties &synch_TV=ids TV для синхронизации;text;13,14 &synch_template=ids шаблонов для синхронизации;text;7
+ * @internal    @installset MultiLang
+ * @internal	@modx_category Manager and Admin
+ */
+
 
 if(!defined('MODX_BASE_PATH')){die('What are you doing? Get out of here!');}
 
