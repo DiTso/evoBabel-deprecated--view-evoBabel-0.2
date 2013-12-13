@@ -4,6 +4,7 @@
  * 
  * MultiLang swith snippet
  *
+ * @author	    webber (web-ber12@yandex.ru)
  * @category 	snippet
  * @version 	0.1
  * @license 	http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)

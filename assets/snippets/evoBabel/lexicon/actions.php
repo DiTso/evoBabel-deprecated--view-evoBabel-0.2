@@ -1,4 +1,6 @@
 <?php
+//@author webber (web-ber12@yandex.ru)
+
 if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
 
 	define('MODX_API_MODE', true);

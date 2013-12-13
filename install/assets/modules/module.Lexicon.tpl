@@ -4,10 +4,11 @@
  * 
  * manage Lexicon
  * 
+ * @author	    webber (web-ber12@yandex.ru)
  * @category	module
  * @version 	0.1
  * @license 	http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
- * @internal	@guid evobalers
+ * @internal	@guid evobabels
  * @internal	@modx_category MultiLang
  * @internal    @installset base, sample
  */
