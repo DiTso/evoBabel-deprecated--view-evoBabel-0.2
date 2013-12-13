@@ -1,4 +1,0 @@
-<?php
-//значения по умолчанию на вкладке Свойства - &lang_template_id=id шаблона языка;text;11
-require_once MODX_BASE_PATH."assets/snippets/evoBabel/snippet.evoBabel.php";
-?>

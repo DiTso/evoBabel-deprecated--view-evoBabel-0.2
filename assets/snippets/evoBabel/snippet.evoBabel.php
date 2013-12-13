@@ -1,4 +1,5 @@
 <?php
+//значения по умолчанию на вкладке Свойства - &lang_template_id=id шаблона языка;text;11
 if(!defined('MODX_BASE_PATH')){die('What are you doing? Get out of here!');}
 
 $out='';
